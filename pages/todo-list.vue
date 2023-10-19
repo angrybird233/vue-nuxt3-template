@@ -1,24 +1,22 @@
-<template >
+<template>
   <div class="todo-list">
-    <div class="search-box">
-      <el-form ref="form" :model="form" label-width="100px" inline label-position="left">
-        <el-form-item label="Task name：" prop="taskName">
-          <el-input v-model="form.taskName" type="text"></el-input>
-        </el-form-item>
-        <el-form-item label="Time：" prop="time" >
-          <el-date-picker 
-            type="datetime" 
-            format="YYYY/MM/DD HH:mm:ss" 
-            value-format="YYYY/MM/DD HH:mm:ss"
-            v-model="form.time" 
-            placeholder="datetime">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="">
-          <el-button type="primary" @click="addTask">confirm</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
+    <el-form ref="form" :model="form" label-width="100px" inline label-position="left">
+      <el-form-item label="Task name：" prop="taskName">
+        <el-input v-model="form.taskName" type="text"></el-input>
+      </el-form-item>
+      <el-form-item label="Time：" prop="time" >
+        <el-date-picker 
+          type="datetime" 
+          format="YYYY/MM/DD HH:mm:ss" 
+          value-format="YYYY/MM/DD HH:mm:ss"
+          v-model="form.time" 
+          placeholder="datetime">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="">
+        <el-button type="primary" @click="addTask">confirm</el-button>
+      </el-form-item>
+    </el-form>
     <div class="list">
       <div class="list-item flex-start-center">
         <div class="col">Task Name</div>
@@ -42,18 +40,18 @@
 
 <script lang="ts" setup>
 
-interface ItemInterface {
+interface FormInterface {
   taskName: string,
   time: string,
 }
 
-const form = reactive<ItemInterface>({
-  taskName: '',
-  time: ''
+const form = reactive<FormInterface>({
+  taskName: "",
+  time: "",
 })
 
 
-const list = ref([
+const list = reactive([
   { taskName: 'Runing', time: '2023/10/19 08:00:00' },
   { taskName: 'Eat food', time: '2023/10/19 09:00:00' },
   { taskName: 'Read book', time: '2023/10/19 10:00:00' },
@@ -64,12 +62,12 @@ const addTask = () => {
   if (!form.taskName || !form.time) {
     return ElMessage.error('Task Name and Time is required')
   };
-  list.value.push({...form})
+  list.push({...form})
 }
 
 
 const deleteRow = (index: number) => {
-  list.value.splice(index, 1)
+  list.splice(index, 1)
 }
 
 </script>
