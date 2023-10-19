@@ -1,0 +1,28 @@
+{
+  "name": "shouyi-web-nuxt",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev --dotenv .env.development --host",
+    "uat": "nuxt dev --dotenv .env.uat --host",
+    "prod": "nuxt dev --dotenv .env.production --host",
+    "build:dev": "nuxt build --dotenv .env.development",
+    "build:uat": "nuxt build --dotenv .env.uat",
+    "build:prod": "nuxt build --dotenv.production",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "less": "^4.2.0",
+    "less-loader": "^11.1.3",
+    "nuxt": "^3.7.0",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.2"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@element-plus/nuxt": "^1.0.5",
+    "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7"
+  }
+}
