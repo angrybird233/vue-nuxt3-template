@@ -1,6 +1,7 @@
+import FormInstance from 'ant-design-vue/lib/form/Form';
 <template>
   <div class="todo-list">
-    <el-form ref="form" :model="form" label-width="100px" inline label-position="left">
+    <el-form ref="formRef" :model="form" label-width="100px" inline label-position="left">
       <el-form-item label="Task name：" prop="taskName">
         <el-input v-model="form.taskName" type="text"></el-input>
       </el-form-item>
@@ -39,19 +40,19 @@
 
 
 <script lang="ts" setup>
+import { FormInstance } from 'element-plus'
 
-interface FormInterface {
-  taskName: string,
-  time: string,
-}
+const formRef = ref<FormInstance>()
 
-const form = reactive<FormInterface>({
+const name = ref(null)
+
+const form = reactive({
   taskName: "",
   time: "",
 })
 
 
-const list = reactive([
+const list = ref([
   { taskName: 'Runing', time: '2023/10/19 08:00:00' },
   { taskName: 'Eat food', time: '2023/10/19 09:00:00' },
   { taskName: 'Read book', time: '2023/10/19 10:00:00' },
@@ -62,12 +63,13 @@ const addTask = () => {
   if (!form.taskName || !form.time) {
     return ElMessage.error('Task Name and Time is required')
   };
-  list.push({...form})
+  list.value.push({...form})
+  formRef.value?.resetFields()
 }
 
 
 const deleteRow = (index: number) => {
-  list.splice(index, 1)
+  list.value.splice(index, 1)
 }
 
 </script>

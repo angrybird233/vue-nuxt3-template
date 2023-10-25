@@ -1,5 +1,5 @@
-export const useCounter = () => {
-  const count = useState('count', () => 10)
+export const useCount = () => {
+  const count = useState('count', () => Math.random()*1000)
   const add=() => {
     count.value++;
   }

@@ -1,5 +1,5 @@
 {
-  "name": "shouyi-web-nuxt",
+  "name": "vue-nuxt3-template",
   "private": true,
   "scripts": {
     "dev": "nuxt dev --dotenv .env.development --host",
@@ -8,6 +8,7 @@
     "build:dev": "nuxt build --dotenv .env.development",
     "build:uat": "nuxt build --dotenv .env.uat",
     "build:prod": "nuxt build --dotenv.production",
+    "build": "nuxt build --dotenv.production",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

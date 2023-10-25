@@ -2,9 +2,10 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  // ssr: false,
+  ssr: false,
   alias: {
     "@/img": "~assets/images/",
+    pinia: process.env.NODE_ENV === 'production' ? '/node_modules/pinia/dist/pinia.mjs' : '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs',
   },
   app: {
     head: {
@@ -14,7 +15,7 @@ export default defineNuxtConfig({
         {name: "google", content: "notranslate" },
         {name: "keywords", content: "vue3 and nuxt3 project" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "icon.png" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/icon.png" }],
       script: [],
       // css: ["~/assets/styles/index.less"],
       // buildModules: ["nuxt-windicss", "@pinia/nuxt"],
@@ -54,12 +55,16 @@ export default defineNuxtConfig({
       }
     }
   },
+  imports: {
+    dirs: [
+      "stores"
+    ]
+  },
   modules: [
     '@element-plus/nuxt',
     // '@nuxtjs/tailwindcss',
     // '@nuxtjs/composition-api',
   ],
   plugins: [
-    // { src: "~/plugins/vue-icon.ts", mode: "all" },
   ]
 })
