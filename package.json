@@ -24,6 +24,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@element-plus/nuxt": "^1.0.5",
+    "@nuxt/content": "^2.9.0",
     "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7"
   }
 }

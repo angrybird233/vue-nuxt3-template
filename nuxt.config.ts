@@ -62,9 +62,13 @@ export default defineNuxtConfig({
   },
   modules: [
     '@element-plus/nuxt',
-    // '@nuxtjs/tailwindcss',
-    // '@nuxtjs/composition-api',
+    '@nuxt/content'
   ],
+  content: {
+    highlight: {
+      theme: 'github-dark',
+    }
+  },
   plugins: [
   ]
 })
